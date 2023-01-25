@@ -27,6 +27,19 @@ PROTOCOL_SERVER = {
 
 ERROR_RETURN = None  # What is returned in case of an error
 
+def split_data(msg, expected_fields):
+	"""
+	Helper method. gets a string and number of expected fields in it. Splits the string 
+	using protocol's data field delimiter (|#) and validates that there are correct number of fields.
+	Returns: list of fields if all ok. If some error occured, returns None
+	"""
+	# A reference to edge cases should be added
+	
+	if (msg.count(DATA_DELIMITER) == expected_fields):
+		return(msg.split(DATA_DELIMITER))
+	else:
+		return([None])
+
 
 def build_message(cmd, data):
 	"""
@@ -49,15 +62,6 @@ def parse_message(data):
     return cmd, msg
 
 	
-def split_data(msg, expected_fields):
-	"""
-	Helper method. gets a string and number of expected fields in it. Splits the string 
-	using protocol's data field delimiter (|#) and validates that there are correct number of fields.
-	Returns: list of fields if all ok. If some error occured, returns None
-	"""
-	# Implement code ...
-
-
 def join_data(msg_fields):
 	"""
 	Helper method. Gets a list, joins all of it's fields to one string divided by the data delimiter. 
