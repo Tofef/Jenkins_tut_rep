@@ -31,3 +31,16 @@ The message transmitted through the socket should contain the IP address and the
 **Well-known ports** - Ports that are saved for common protocols (e.g. port 80 - saved for HTTP protocol communication). <br>
 
 ![alt text](Images/Socket.PNG)
+
+## 2.3 Client (TCP)
+
+**Stages:** <br>
+1. create a socket. <br>
+2. Connect to the server. <br>
+3. Send data. <br>
+4. Recieve data. <br>
+5. Close the socket. <br>
+<br>
+'socket.AF_INET' - IP Protocol - The socket connects between two IP addresses. <br>  
+'socket.SOCK_STREAM' - TCP Protocol. <br>
+'recv(1024)' - 1024 is the maximum bytes we can receive from the socket. <br>
