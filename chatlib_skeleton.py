@@ -34,11 +34,19 @@ def split_data(msg, expected_fields):
 	Returns: list of fields if all ok. If some error occured, returns None
 	"""
 	# A reference to edge cases should be added
-	
+
 	if (msg.count(DATA_DELIMITER) == expected_fields):
 		return(msg.split(DATA_DELIMITER))
 	else:
 		return([None])
+
+
+def join_data(msg_fields):
+	"""
+	Helper method. Gets a list, joins all of it's fields to one string divided by the data delimiter. 
+	Returns: string that looks like cell1#cell2#cell3
+	"""
+	return (DATA_DELIMITER.join(str(item) for item in msg_fields))
 
 
 def build_message(cmd, data):
@@ -46,9 +54,45 @@ def build_message(cmd, data):
 	Gets command name (str) and data field (str) and creates a valid protocol message
 	Returns: str, or None if error occured
 	"""
-    # Implement code ...
 
-    return full_msg
+	full_msg = ''
+
+	if (cmd=='LOGIN'):
+		full_msg = cmd.ljust(16) + DELIMITER + (str(len(data))).zfill(4) + DELIMITER + data
+	elif (cmd=='LOGOUT'):
+		full_msg = cmd.ljust(16) + DELIMITER + (str('0')).zfill(4) + DELIMITER 
+	elif (cmd=='LOGGED'):
+		full_msg = cmd.ljust(16) + DELIMITER + (str('0')).zfill(4) + DELIMITER 
+	elif (cmd=='GET_QUESTION'):
+		full_msg = cmd.ljust(16) + DELIMITER + (str('0')).zfill(4) + DELIMITER 
+	elif (cmd=='SEND_ANSWER'):
+		full_msg = cmd.ljust(16) + DELIMITER + (str(len(data))).zfill(4) + DELIMITER + data
+	elif (cmd=='MY_SCORE'):
+		full_msg = cmd.ljust(16) + DELIMITER + (str('0')).zfill(4) + DELIMITER 
+	elif (cmd=='HIGHSCORE'):
+		full_msg = cmd.ljust(16) + DELIMITER + (str('0')).zfill(4) + DELIMITER 
+	elif (cmd=='LOGIN_OK'):
+		full_msg = cmd.ljust(16) + DELIMITER + (str('0')).zfill(4) + DELIMITER 
+	elif (cmd=='LOGGED_ANSWER'):
+		full_msg = cmd.ljust(16) + DELIMITER + (str(len(data))).zfill(4) + DELIMITER + data
+	elif (cmd=='YOUR_QUESTION'):
+		full_msg = cmd.ljust(16) + DELIMITER + (str(len(data))).zfill(4) + DELIMITER + data
+	elif (cmd=='CORRECT_ANSWER'):
+		full_msg = cmd.ljust(16) + DELIMITER + (str('0')).zfill(4) + DELIMITER 
+	elif (cmd=='WRONG_ANSWER'):
+		full_msg = cmd.ljust(16) + DELIMITER + (str(len(data))).zfill(4) + DELIMITER + data
+	elif (cmd=='YOUR_SCORE'):
+		full_msg = cmd.ljust(16) + DELIMITER + (str(len(data))).zfill(4) + DELIMITER + data
+	elif (cmd=='ALL_SCORE'):
+		full_msg = cmd.ljust(16) + DELIMITER + (str(len(data))).zfill(4) + DELIMITER + data
+	elif (cmd=='ERROR'):
+		full_msg = cmd.ljust(16) + DELIMITER + (str(len(data))).zfill(4) + DELIMITER + data
+	elif (cmd=='NO_QUESTIONS'):
+		full_msg = cmd.ljust(16) + DELIMITER + (str('0')).zfill(4) + DELIMITER 
+	else:
+		return None
+	
+	return full_msg
 
 
 def parse_message(data):
@@ -56,15 +100,14 @@ def parse_message(data):
 	Parses protocol message and returns command name and data field
 	Returns: cmd (str), data (str). If some error occured, returns None, None
 	"""
-    # Implement code ...
-
-    # The function should return 2 values
-    return cmd, msg
+	splitted_data = data.split(DELIMITER)
+	cmd = splitted_data[0].replace(" ", "")
+	msg_len = int(splitted_data[1])
+	msg = splitted_data[2]
+	if (len(msg) != msg_len):
+		cmd = None
+		msg = None
+	return cmd, msg
 
 	
-def join_data(msg_fields):
-	"""
-	Helper method. Gets a list, joins all of it's fields to one string divided by the data delimiter. 
-	Returns: string that looks like cell1#cell2#cell3
-	"""
-	# Implement code ...
+
