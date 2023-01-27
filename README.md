@@ -1,6 +1,5 @@
 # Networks tutorial
-Tutorial for the working with Networks.
-based on the course of campus.il
+Tutorial for the working with networks, based on the course of campus.il. <br>
 in addition, I would like to manage an operation in the Jenkins, related to the project updates.
 
 ## 1.2 What is the internet network?
@@ -25,3 +24,10 @@ The protocols consist of Header (general data) and data (the content). <br>
 <br>
 **TCP protocol (Transmission Control Protocol)** - uses for reliable communication. The data will transport fully and in the right manner. The protocol adds a sequence number to each packet. In addition, the protocol uses acknowledgment - the receiver side informs the sender that he received the data properly. <br>
 **UDP protocol (User Datagram Protocol)** - unreliable protocol. The advantage of this protocol is the speed of the data transfer. it uses for tasks that do not require reliability, such as video calls (where speed is more important). <br> 
+
+## 2.2 Socket 
+**Socket** - We can think of the communication between a client and a server or between two applications as a "tube". The socket is one of the tube's holes.
+The message transmitted through the socket should contain the IP address and the port number of the receiver, and the IP address and the port number of the sender. Through the socket, the data is transmitted in units of bytes. <br>
+**Well-known ports** - Ports that are saved for common protocols (e.g. port 80 - saved for HTTP protocol communication). <br>
+
+![alt text](Socket.PNG)
