@@ -44,3 +44,17 @@ The message transmitted through the socket should contain the IP address and the
 'socket.AF_INET' - IP Protocol - The socket connects between two IP addresses. <br>  
 'socket.SOCK_STREAM' - TCP Protocol. <br>
 'recv(1024)' - 1024 is the maximum bytes we can receive from the socket. <br>
+
+## 2.4 Server (TCP)
+
+**Stages:** <br>
+1. create a socket. <br>
+2. Assign an IP address and port number. <br>
+3. Listen. <br>
+4. Connection to the Client. <br>
+5. Recieve data. <br>
+6. Send data. <br>
+7. Disconnection from the Client. <br>
+8. Close the socket. <br>
+
+"0.0.0.0" - listen to everybody. <br>
