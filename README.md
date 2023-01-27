@@ -30,4 +30,4 @@ The protocols consist of Header (general data) and data (the content). <br>
 The message transmitted through the socket should contain the IP address and the port number of the receiver, and the IP address and the port number of the sender. Through the socket, the data is transmitted in units of bytes. <br>
 **Well-known ports** - Ports that are saved for common protocols (e.g. port 80 - saved for HTTP protocol communication). <br>
 
-![alt text](Socket.PNG)
+![alt text](Images/Socket.PNG)
