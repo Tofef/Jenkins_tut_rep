@@ -1,6 +1,6 @@
 # Networks tutorial
 Tutorial for the working with networks, based on the course of campus.il. <br>
-in addition, I would like to manage an operation in the Jenkins, related to the project updates. <br>
+in addition, I would like to manage an operation in the Jenkins, related to the project updates.
 
 ## 1.2 What is the internet network?
 
